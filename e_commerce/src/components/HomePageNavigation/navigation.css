@@ -1,0 +1,46 @@
+/* Before scroll Navbar */
+.navTitle{
+    font-family             : 'Montserreat','sans-serif';
+    color                   : #cec6c0 !important;
+    width                   : 700;
+    font-size               : 26px;
+
+}
+
+/* After Scroll NavBar */
+
+.navTitleScroll{
+    font-family             : 'Montserreat','sans-serif';
+    color                   : #4c9DED !important;
+    width                   : 700;
+    font-size               : 24px;
+
+}
+
+.navBarImage{
+    border-radius           : 50% ;
+}
+
+.navBarBackgroundColorBeforescrolly{
+    background-color         : rgba(0, 0, 0, 0.4) !important;
+}
+
+.navBarBackgroundColorAfterScrolly{
+    background-color         : #ffffff !important;
+}
+
+.navItemMenuBeforeScroll{
+    font-size                 : 16px;
+    text-decoration           : none !important;
+    font-family               :'Montserreat','sans-serif' ;
+    font-weight               : 400;
+    color                     : #696464 ;
+}
+
+.navItemMenuAfterScroll{
+    font-size                 : 16px;
+    text-decoration           : none !important;
+    font-family               :'Montserreat','sans-serif' ;
+    font-weight               : 400;
+    color                     : #ee1225;
+}

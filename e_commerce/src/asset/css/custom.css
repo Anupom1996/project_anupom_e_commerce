@@ -1,0 +1,139 @@
+.topFixedBanner{
+    background-image        : url("../image/project.jpg");
+    min-height              : 550px;
+    background-attachment   : fixed;
+    background-position     : center;
+    background-repeat       : no-repeat;
+    background-size         : cover;
+}
+
+.topBannerOverlay{
+    position                : absolute;
+    min-height              : 550px;
+    width                   : 100%;
+    background              : rgba(0, 0,0,0.9);
+}
+
+/* middle contain mergin */
+
+.topContain{
+    margin-top: 10rem;
+}
+
+
+.topTitle{
+    font-family              : 'Montserreat','sans-serif';
+    font-weight              : 700;
+    color                    : #bb6e64;
+    font-size                : 48px;
+    
+}
+
+
+.topSubTitle{
+    font-family              : 'Raleway','sans-serif';
+    font-weight              :  400;
+    color                    :#ffffff;
+    font-size                :  32px;
+    
+    
+}
+
+.serviceCard{
+    margin                    : 5px 5px 5px 5px;
+    height                    : 22rem;
+    padding                   : 40px 30px 60px 30px;
+    box-shadow                : 0 0 3px 0 rgba(0,115,230,0.2);
+}
+
+.serviceCard:hover{
+   
+    box-shadow                 : 0 0 15px 0 rgba(0,115,230,0.2);
+}
+
+.serviceTitle{
+    color                      :#4c9DED;
+    margin-top                 : 3rem;
+    margin-bottom              : 3rem;
+    font-family                : 'Montserreat','sans-serif';
+    font-size                  : 28px;
+    font-weight                : 600;
+}
+
+.serviceImage{
+    border-radius              : 50% ;
+
+}
+
+.serviceSubTitle{
+    margin-top               :  1rem;
+    font-family              : 'Raleway','sans-serif';
+    font-weight              :  600;
+    color                    :#f00b0b;
+    font-size                :  20px;
+    
+    
+}
+
+.serviceSubAbout{
+    color                    :greenyellow;
+    background               : -webkit-linear-gradient(left, #7579ff, #154127);
+    font-size                : 16px;
+    font-weight              : 600;
+    font-family              : 'Raleway','sans-serif';
+    border-radius            : 15px;
+    border-color             : rgba(0, 0,0,0.9);
+    border-width             : 15px;
+}
+
+.loginForm{
+    width                  : 1000;
+    transform              : translate(-50%,-50%);
+    top                    : 50%;
+    position               : absolute;
+    left                   : 50%;
+}
+
+.topFixedLoginBanner{
+    background-image        : url("../image/loginpic.png");
+    min-height              : 700px;
+    background-attachment   : fixed;
+    background-position     : center;
+    background-repeat       : no-repeat;
+    background-size         : cover;
+}
+
+.topLoginBannerOverlay{
+    position                : absolute;
+    min-height              : 700px;
+    width                   : 100%;
+    background              : rgba(0, 0,0,0.9);
+}
+
+.loginForm-h1{
+
+    float                   : left;
+    border-bottom           : 6px solid #ffffff;
+    font-size               : 40;
+    color                   : #f00b0b !important;
+}
+
+.loginForm-label{
+
+    float                   : left;
+    font-size               : 20;
+    color                   : #ecdf23 !important;
+}
+
+.loginForm-submit{
+
+    float                   : left;
+    font-size               : 20;
+    color                   : #0963d8 !important;
+    border-radius           : 10px;
+}
+
+.loginForm-textBox{
+    border-radius           : 10px;
+    width                   : fit-content;
+}

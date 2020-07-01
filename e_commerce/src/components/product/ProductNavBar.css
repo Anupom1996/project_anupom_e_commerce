@@ -1,0 +1,13 @@
+.brandlImage{
+    border-radius       : 50% ;
+    height              : 50px;
+    width               : 100px;
+    border              : 1px solid #005;
+    margin              : 0 auto;
+}
+.navBarBackground-color{
+    background-color    : #ffffff;
+}
+.navBar-title{
+    color               :black !important;
+}

@@ -1,0 +1,37 @@
+.carousalImage{
+    border-radius       : 50% ;
+    height              : 100px;
+    width               : 100px;
+    border              : 1px solid #005;
+    margin              : 0 auto;
+}
+
+.carousalTitle{
+    margin-top               :  1rem;
+    font-family              : 'Montserreat','sans-serif';
+    font-weight              :  600;
+    color                    :#f00b0b;
+    font-size                :  22px;
+    
+    
+}
+
+.carousalSubTitle{
+    margin-top               :  1rem;
+    font-family              : 'Raleway','sans-serif';
+    font-weight              :  800;
+    color                    :#c9a60a;
+    font-size                :  18px;
+    
+    
+}
+
+.carousalParagraph{
+    margin-top               :  1rem;
+    font-family              : 'Raleway','sans-serif';
+    font-weight              :  400;
+    color                    : #000000;
+    font-size                :  16px;
+    
+    
+}

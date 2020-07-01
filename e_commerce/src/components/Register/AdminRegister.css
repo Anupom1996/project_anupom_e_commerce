@@ -1,0 +1,25 @@
+.registration-Form-h1{
+
+    
+    
+    font-size               : 40;
+    color                   : #f00b0b !important;
+}
+
+.registrationForm-label{
+
+    
+    font-size               : 20;
+    color                   : #ecdf23 !important;
+}
+
+.registrationForm-submit{
+
+    width                   :100px ;
+    font-size               : 20;
+    color                   : #0963d8 !important;
+    border-radius           : 10px;
+}
+.errMessage{
+    color: red;
+}
