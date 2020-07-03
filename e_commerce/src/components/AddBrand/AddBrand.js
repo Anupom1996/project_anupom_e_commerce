@@ -3,7 +3,9 @@ import './AddBrand.css'
 import { Redirect, Link } from 'react-router-dom'
 import axios from 'axios'
 import { Container, Button } from 'react-bootstrap'
-
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 // import '../Login/Login.css'
 import '../../asset/css/custom.css'
 import '../../asset/css/bootstrap.min.css'
@@ -74,7 +76,10 @@ class AddBrand extends Component {
                          isRegister: true
                     })
 
-                })
+                }).then(setTimeout(()=>{
+                    toast.success("LOADING ACCOUNT") 
+                }),2000)
+                
                 .catch(error => {
                     console.log(error)
                 })

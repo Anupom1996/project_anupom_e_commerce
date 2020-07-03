@@ -25,7 +25,7 @@ class CategoryNavBar extends Component {
                                 
                                 
                             </NavDropdown> */}
-                            <Nav.Link><NavLink exact activeStyle={{color:'#00a8ee'}} to="/login/dashboard/Category" >AddCategory</NavLink></Nav.Link>
+                            <Nav.Link><NavLink exact activeStyle={{color:'#00a8ee'}} to="/login/dashboard/category/addcategory" >AddCategory</NavLink></Nav.Link>
                         </Nav>
                         <Nav>
                         <Form inline>

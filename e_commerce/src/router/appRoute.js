@@ -10,6 +10,8 @@ import BrandPage from '../pages/BrandPage'
 import CategoryPage from '../pages/CategoryPage';
 import ProductPage from '../pages/ProductPage';
 import AddBrand from '../components/AddBrand/AddBrand';
+import UpdateBrand from '../components/UpdateBrand/UpdateBrand';
+import AddCategory from '../components/AddCategory/AddCategory';
 class AppRoute extends Component {
     render() {
         return (
@@ -31,6 +33,8 @@ class AppRoute extends Component {
                     <Route exact path="/login/dashboard/category" ><AuthGuard cmp={CategoryPage}/></Route>
                     <Route exact path="/login/dashboard/product" ><AuthGuard cmp={ProductPage}/></Route>
                     <Route exact path="/login/dashboard/brand/addbrand" ><AuthGuard cmp={AddBrand}/></Route>
+                    <Route exact path="/login/dashboard/brand/editbrand" ><AuthGuard cmp={UpdateBrand}/></Route>
+                    <Route exact path="/login/dashboard/category/addcategory" ><AuthGuard cmp={AddCategory}/></Route>
                     <Route exact path="/*" component={PageNotFound}/>
 
                     
