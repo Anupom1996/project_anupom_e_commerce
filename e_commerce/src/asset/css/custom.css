@@ -137,3 +137,40 @@
     border-radius           : 10px;
     width                   : fit-content;
 }
+
+.purple{
+    color                   : purple;
+}
+
+.purple-bg{
+    background-color        : rgb(189, 133, 70);
+}
+
+.delete-style{
+    color                   : red;
+    text-align: center;
+    font-size: 35px;
+}
+
+.edit-style{
+    color                   : green;
+    text-align: center;
+    font-size: 35px;
+}
+.th-style{
+    size                    : 15;
+    text-align: center;
+    font-size: 25px;
+    
+}
+.td-style{
+    color                   : rgb(196, 60, 60);
+    text-align              : center;
+    font-size               : 15px;
+}
+.h1-style{
+    font-size               :20px;
+    font-weight             : 200;
+    color                   : black;
+    
+}

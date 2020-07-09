@@ -6,10 +6,10 @@ import { BsPencilSquare } from 'react-icons/bs';
 class ProducuctShow extends Component {
 
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            Product: {}
+            Product: []
 
         }
     }
@@ -28,21 +28,31 @@ class ProducuctShow extends Component {
                 console.log("error")
             })
     }
+    shouldComponentUpdate(props) {
+        if(props.filteredProducts && props.filteredProducts.length && JSON.stringify(props.filteredProducts) != JSON.stringify(this.state.Product)){
+            this.setState({Product: props.filteredProducts});
+            return true;
+        }
+        else if(this.state.Product){
+            return true;
+        }
+        return false;
+    }
     render() {
         const {Product}=this.state
         console.log(this.state.Product)
         return (
             <Fragment>
                  <div>ProductList</div>
-                <table border="1">
-                    <thead>
+                <table className="table table-bordered table-sm " >
+                    <thead className="thead-dark">
                         <tr>
                             <th>ProductName</th>
                             <th>ProductImage</th>
                             <th>Stock</th>
                             <th>ProductDescription</th>
                             <th>ProductSpecification</th>
-                            
+                            <th>ProductPrice</th>
                             <th>Action</th>
                         </tr>
                         <tr>
@@ -74,9 +84,12 @@ class ProducuctShow extends Component {
                                        {Pro.ProductSpecification}
                                     </td>
                                     <td>
-                                        <BsFillTrashFill onClick={() => this.deleteCategory(Pro._id)}></BsFillTrashFill>
-                                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                   <BsPencilSquare ></BsPencilSquare>
+                                        {Pro.ProductPrice}
+                                    </td>
+                                    <td>
+                                        <BsFillTrashFill onClick={() => this.deleteCategory(Pro._id)}className="delete-style" ></BsFillTrashFill>
+                                   &nbsp; &nbsp; 
+                                   <BsPencilSquare className="edit-style" ></BsPencilSquare>
                                     </td>
                                 </tr>
 

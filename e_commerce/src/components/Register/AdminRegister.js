@@ -51,10 +51,10 @@ class AdminRegister extends Component {
     
 
     isValidForm=()=>{
-        let fields= this.state.fields;
-        let errors =this.state.fields;
+        
+        let errors ={};
         let formIsValid=true;
-        let validationError=false
+        
         var mail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         var pass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!]).{6,20}$/;
         var phoneNo = /^[789]\d{9}$/;
@@ -63,17 +63,17 @@ class AdminRegister extends Component {
         
             // validation of Admin Email
             
-            if(!fields["AdminEmail"])
+            if(!this.state.fields["AdminEmail"])
             {
                 formIsValid = false;
-                validationError =true;
+               
                 errors["AdminEmail"]="*plz enter the email id"
             }
-            if(typeof fields["AdminEmail"]!== "undefined")
+            if(typeof this.state.fields["AdminEmail"]!== "undefined")
             {
-                if (!fields["AdminEmail"].match(mail))
+                if (!this.state.fields["AdminEmail"].match(mail))
                 {
-                    validationError =2;
+                  
                     formIsValid = false;
                     errors["AdminEmail"]="*plz enter the valid Email"
                 }
@@ -83,31 +83,31 @@ class AdminRegister extends Component {
             //validation of Admin Password.....
 
 
-            if(!fields["AdminPassword"])
+            if(!this.state.fields["AdminPassword"])
             {
-                validationError =2;
+                
                 formIsValid = false;
                 errors["AdminPassword"]="*plz enter the Password"
             }
-            if(typeof fields["AdminPassword"]!== "undefined")
+            if(typeof this.state.fields["AdminPassword"]!== "undefined")
             {
                 
-                if (fields["AdminPassword"].length<6)
+                if (this.state.fields["AdminPassword"].length<6)
                 {
-                    validationError =2
+                   
                     formIsValid = false;
                     errors["AdminPassword"]="*minimum 6 letters"
                 }
-                else if (fields["AdminPassword"].length>20)
+                else if (this.state.fields["AdminPassword"].length>20)
                 {
-                    validationError =2;
+                   
                     formIsValid = false;
                     errors["AdminPassword"]="*maximum 20 letters"
                 }
                 
-                else if (!fields["AdminPassword"].match(pass))
+                else if (!this.state.fields["AdminPassword"].match(pass))
                 {
-                    validationError =2;
+                    
                     formIsValid = false;
                     errors["AdminPassword"]="*must contain:@!#$%"
                 }
@@ -118,15 +118,15 @@ class AdminRegister extends Component {
             //validation of admin First Name.....
 
 
-            if(!fields["AdminFirstName"])
+            if(!this.state.fields["AdminFirstName"])
             {
-                validationError =2;
+               
                 formIsValid = false;
                 errors["AdminFirstName"]="*plz enter the Firstname"
             }
 
             if (fNameFirstLetter>= 'a' && fNameFirstLetter <= 'z') {
-                validationError =2;
+                
                 formIsValid = false;
                 errors["AdminFirstName"]="* first letter contain Capital"
               }
@@ -134,14 +134,14 @@ class AdminRegister extends Component {
              //validation of admin Last Name....
              
              
-            if(!fields["AdminLastName"])
+            if(!this.state.fields["AdminLastName"])
             {
-                validationError =2;
+               
                 formIsValid = false;
                 errors["AdminLastName"]="*plz enter the lastname"
             }
             if (lNameFirstLetter>= 'a' && lNameFirstLetter <= 'z') {
-                validationError =2;
+                
                 formIsValid = false;
                 errors["AdminLastName"]="* first letter contain Capital"
               }
@@ -149,19 +149,19 @@ class AdminRegister extends Component {
             //validation of Admin Phone........
 
 
-            if(!fields["AdminPhone"])
+            if(!this.state.fields["AdminPhone"])
             {
-                validationError =2;
+               
                 formIsValid = false;
                 errors["AdminPhone"]="*plz enter the phone"
             }
             
-            if(typeof fields["AdminPhone"]!== "undefined")
+            if(typeof this.state.fields["AdminPhone"]!== "undefined")
             {
                 
-                if (!fields["AdminPhone"].match(phoneNo))
+                if (!this.state.fields["AdminPhone"].match(phoneNo))
                 {
-                    validationError =2;
+                   
                     formIsValid = false;
                     errors["AdminPhone"]="*plz enter the valid Phone  no"
                 }
@@ -181,15 +181,7 @@ class AdminRegister extends Component {
         event.preventDefault();
         if (this.isValidForm()) {
             console.log(this.state)
-            // let fields ={}
-            //     fields["AdminEmail"]=" ";
-            //     fields["AdminPassword"]=" ";
-            //     fields["AdminFirstName"]=" ";
-            //     fields["AdminLastName"]=" ";
-            //     fields["AdminPhone"]=" ";
-            //     this.setState({
-            //         fields:fields
-            //     })
+            
             axios.post('http://localhost:3050/adminRegistration', this.state.fields)
                 .then(response => {
                     console.log(response)

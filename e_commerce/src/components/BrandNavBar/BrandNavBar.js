@@ -8,8 +8,8 @@ import './BrandNavBar.css'
 import axios from 'axios'
 class BrandNavBar extends Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
             query:'',
             Brand:[]
@@ -25,16 +25,17 @@ class BrandNavBar extends Component {
         .then(res=>{
             console.log(res)
             this.setState({
-                Brand: res.data.allBrand,
+                Brand: res.data.brandData,
 
             })
-
-
+           
+            this.props.onSearch(this.state.Brand);
         })
         .catch(err=>{
             console.log(err)
         })
     }
+    
     onChangeHandler=(event)=>{
         const query=event.target.value
         this.setState({
@@ -56,6 +57,7 @@ class BrandNavBar extends Component {
                      
                             
                         </Nav>
+                        
                         <Nav>
                         <Form inline>
                             <FormControl type="text" placeholder="Search Brand" className="mr-sm-2" name="query" value={query} onChange={this.onChangeHandler} />

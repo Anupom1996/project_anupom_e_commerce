@@ -5,10 +5,10 @@ import {Button} from 'react-bootstrap'
 import { BsPencilSquare } from 'react-icons/bs';
 class ShowCategory extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            Category: {}
+            Category: []
 
         }
     }
@@ -44,30 +44,41 @@ class ShowCategory extends Component {
     ShowCategory=()=>{
         this.componentDidMount();
     }
+    shouldComponentUpdate(props) {
+        if(props.filteredCategorys && props.filteredCategorys.length && JSON.stringify(props.filteredCategorys) != JSON.stringify(this.state.Category)){
+            this.setState({Category: props.filteredCategorys});
+            return true;
+        }
+        else if(this.state.Category){
+            return true;
+        }
+        return false;
+    }
     render() {
         const { Category } = this.state
         console.log(this.state.Category)
         console.log(this.state.Category.CategoryName)
         return (
             <Fragment>
-                <div>Categorylist</div>
-                <table border="1">
+                <div>
+                <h1 className="h1-style">CategoryList</h1>
+                </div>
+              
+                <table border="1" className="table table-bordered table-sm " >
                     <thead>
-                        <tr>
-                            <th>CategoryName</th>
-                            <th>CategoryImage</th>
-                            <th>categorybrands</th>
-                            <th>categoryDescription</th>
-                            <th>Action</th>
+                        <tr className="purple-bg">
+                            <th className="th-style">CategoryName</th>
+                            <th className="th-style">CategoryImage</th>
+                            <th className="th-style">Categorybrands</th>
+                            <th className="th-style">CategoryDescription</th>
+                            <th className="th-style">Action</th>
                         </tr>
-                        <tr>
-
-                        </tr>
+                        
                     </thead>
                     <tbody>
                         {(Category.length > 0) ? Category.map((Cat, index) => {
                             return (
-                                <tr key={index}>
+                                <tr key={index} className="td-style">
                                     <td>{Cat.CategoryName}</td>
                                     <td>
                                         <img src={'http://localhost:3050/' + Cat.CategoryImage} alt="not found" height="100"
@@ -82,9 +93,9 @@ class ShowCategory extends Component {
                                     </td>
 
                                     <td>
-                                        <BsFillTrashFill onClick={() => this.deleteCategory(Cat._id)}></BsFillTrashFill>
-                                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                   <BsPencilSquare ></BsPencilSquare>
+                                        <BsFillTrashFill onClick={() => this.deleteCategory(Cat._id)} className="delete-style"></BsFillTrashFill>
+                                   &nbsp;
+                                   <BsPencilSquare className="edit-style"></BsPencilSquare>
                                     </td>
                                 </tr>
 

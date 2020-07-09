@@ -96,7 +96,8 @@ class AddBrand extends Component {
         const { BrandName, isRegister } = this.state
         if (isRegister) {
             
-            return <Redirect to="/login/dashboard/brand"></Redirect>
+            // return <Redirect to="/login/dashboard/brand"></Redirect>
+            alert("successfull insert")
         }
         return (
             <Fragment>

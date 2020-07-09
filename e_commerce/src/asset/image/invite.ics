@@ -1,0 +1,70 @@
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VEVENT
+DTSTART:20200709T093000Z
+DTEND:20200709T110000Z
+DTSTAMP:20200707T180150Z
+ORGANIZER;CN=arijit.d@indusnet.co.in:mailto:arijit.d@indusnet.co.in
+UID:7e1c6jh26uki0qf3lo7e7p4hvp@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=subham.pandey@indusnet.co.in;X-NUM-GUESTS=0:mailto:subham.pandey@in
+ dusnet.co.in
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=soumyadeep.bhadra@indusnet.co.in;X-NUM-GUESTS=0:mailto:soumyadeep.b
+ hadra@indusnet.co.in
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=abhishek.nigam@indusnet.co.in;X-NUM-GUESTS=0:mailto:abhishek.nigam@
+ indusnet.co.in
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=arindam.chakraborty@indusnet.co.in;X-NUM-GUESTS=0:mailto:arindam.ch
+ akraborty@indusnet.co.in
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=raakeshmohan.ks@indusnet.co.in;X-NUM-GUESTS=0:mailto:raakeshmohan.k
+ s@indusnet.co.in
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=tanmaya.sahoo@indusnet.co.in;X-NUM-GUESTS=0:mailto:tanmaya.sahoo@in
+ dusnet.co.in
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=souvik.mallick@indusnet.co.in;X-NUM-GUESTS=0:mailto:souvik.mallick@
+ indusnet.co.in
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=sayantanimandal@indusnet.co.in;X-NUM-GUESTS=0:mailto:sayantanimanda
+ l@indusnet.co.in
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=gargi.saha@indusnet.co.in;X-NUM-GUESTS=0:mailto:gargi.saha@indusnet
+ .co.in
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=anupom.das@indusnet.co.in;X-NUM-GUESTS=0:mailto:anupom.das@indusnet
+ .co.in
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=v.sweta@indusnet.co.in;X-NUM-GUESTS=0:mailto:v.sweta@indusnet.co.in
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE
+ ;CN=arijit.d@indusnet.co.in;X-NUM-GUESTS=0:mailto:arijit.d@indusnet.co.in
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=saikat.pradhan@indusnet.co.in;X-NUM-GUESTS=0:mailto:saikat.pradhan@
+ indusnet.co.in
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=debashree.mandal@indusnet.co.in;X-NUM-GUESTS=0:mailto:debashree.man
+ dal@indusnet.co.in
+X-MICROSOFT-CDO-OWNERAPPTID:-1351319898
+CREATED:20200707T180146Z
+DESCRIPTION:-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~:~::~:~::-\nPlease do not edit this section of the descriptio
+ n.\n\nThis event has a video call.\nJoin: https://meet.google.com/iho-bdty-
+ omp\n+1 402-797-1158 PIN: 585752982#\n\nView your event at https://www.goog
+ le.com/calendar/event?action=VIEW&eid=N2UxYzZqaDI2dWtpMHFmM2xvN2U3cDRodnAgY
+ W51cG9tLmRhc0BpbmR1c25ldC5jby5pbg&tok=MjMjYXJpaml0LmRAaW5kdXNuZXQuY28uaW4zZ
+ WQ0MmQwMThjNDNlNjVlYWMxNTRiNjIyYmYzYjRkZmI2ZGYwZmE5&ctz=Asia%2FKolkata&hl=e
+ n&es=1.\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:
+ ~:~:~:~:~:~:~::~:~::-
+LAST-MODIFIED:20200707T180148Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:HR Connect & Induction Programme
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR

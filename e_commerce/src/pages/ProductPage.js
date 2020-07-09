@@ -4,12 +4,22 @@ import ProductNavbar from '../components/product/ProductNavbar';
 import ShowCategory from '../components/ShowCategory/ShowCategory';
 import ProducuctShow from '../components/ShowProduct/ProducuctShow';
 class ProductPage extends Component {
+    constructor(){
+        super();
+        this.state = {
+            filteredProducts: []
+        }
+    }
+
+    emitProduct = (event) => {
+        this.setState({filteredProducts: event});
+    }
     render() {
         return (
             <Fragment>
                  <Dashboard_navBar></Dashboard_navBar>
-                <ProductNavbar></ProductNavbar>
-                <ProducuctShow></ProducuctShow>
+                <ProductNavbar onSearch={this.emitProduct }></ProductNavbar>
+                <ProducuctShow filteredProducts= {this.state.filteredProducts}></ProducuctShow>
             </Fragment>
         );
     }
