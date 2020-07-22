@@ -3,6 +3,7 @@ import axios from 'axios'
 import { BsFillTrashFill } from 'react-icons/bs';
 import {Button} from 'react-bootstrap'
 import { BsPencilSquare } from 'react-icons/bs';
+import { Redirect, NavLink, Link } from 'react-router-dom';
 class ShowCategory extends Component {
 
     constructor(props) {
@@ -95,7 +96,8 @@ class ShowCategory extends Component {
                                     <td>
                                         <BsFillTrashFill onClick={() => this.deleteCategory(Cat._id)} className="delete-style"></BsFillTrashFill>
                                    &nbsp;
-                                   <BsPencilSquare className="edit-style"></BsPencilSquare>
+                                   {/* <BsPencilSquare className="edit-style"></BsPencilSquare> */}
+                                   <Link to={'/login/dashboard/category/editcategory/'+Cat._id}>Edit</Link>
                                     </td>
                                 </tr>
 

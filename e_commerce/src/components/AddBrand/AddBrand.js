@@ -41,7 +41,7 @@ class AddBrand extends Component {
 
     isValidForm=()=>{
         let fields= this.state.fields;
-        let errors =this.state.fields;
+        let errors ={};
         let formIsValid=true;
         let validationError=false
         
@@ -68,17 +68,21 @@ class AddBrand extends Component {
         event.preventDefault();
         if (this.isValidForm()) {
             console.log(this.state)
-            
+            console.log(this.state.fields)
             axios.post('http://localhost:3050/BrandInsert', this.state.fields)
+           
+            .then(res => {toast.success("Brand Added") })
                 .then(response => {
+
                     console.log(response)
                     this.setState({
                          isRegister: true
                     })
 
-                }).then(setTimeout(()=>{
-                    toast.success("LOADING ACCOUNT") 
-                }),2000)
+                })
+                // .then(setTimeout(()=>{
+                //     toast.success("LOADING ACCOUNT") 
+                // }),2000)
                 
                 .catch(error => {
                     console.log(error)
@@ -95,13 +99,16 @@ class AddBrand extends Component {
     render() {
         const { BrandName, isRegister } = this.state
         if (isRegister) {
-            
+            setTimeout(()=>{
+                toast.success(<Redirect to="/login/dashboard/brand"></Redirect>) 
+            },2000)
             // return <Redirect to="/login/dashboard/brand"></Redirect>
-            alert("successfull insert")
+            // alert("successfull insert")
         }
         return (
             <Fragment>
             <Container className="topFixedLoginBanner p-0" fluid={true} >
+
                     <div className="topLoginBannerOverlay">
                         <form className="registration-Form" onSubmit={this.register}>
                             <div>
@@ -111,7 +118,7 @@ class AddBrand extends Component {
                             <br></br>
                             <div className="registrationForm-label">
                                 <label>BrandName </label>
-
+                                <ToastContainer />
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                                 :<input type="text" className="" placeholder="brand" name="BrandName" value={BrandName}  onChange={this.onChangeHandler}></input>

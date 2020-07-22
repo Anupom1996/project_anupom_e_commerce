@@ -4,8 +4,9 @@ import { Redirect, Link } from 'react-router-dom'
 import axios from 'axios'
 import { Container, Button } from 'react-bootstrap'
 import 'react-toastify/dist/ReactToastify.css';
-import { toast } from 'react-toastify';
-import { ToastContainer } from 'react-toastify';
+
+import { ToastContainer, toast } from 'react-toastify';
+
 // import '../Login/Login.css'
 import '../../asset/css/custom.css'
 import '../../asset/css/bootstrap.min.css'
@@ -15,73 +16,130 @@ class AddProduct extends Component {
         super();
         this.state = {
             Brands: [],
+            ProductImage: [],
             fields: {
-                ProductName:'',
-                BrandId:[],
-                ProductImage: [],
-                ProductPrice:'',
-                ProductDescrption:'',
-                ProductSpecification:'',
-                Stock:''
+                ProductName: '',
+                BrandId: [],
+
+                ProductPrice: '',
+                ProductDescrption: '',
+                ProductSpecification: '',
+                Stock: ''
 
             },
-            ProductImage:[],
+            ProductImage: [],
+            
             errors: {
-                ProductName:'',
-                BrandId:[],
-                ProductImage:[],
-                ProductPrice:'',
-                ProductDescrption:'',
-                ProductSpecification:'',
-                Stock:''
+                ProductName: '',
+                BrandId: [],
+                ProductImage: [],
+                ProductPrice: '',
+                ProductDescrption: '',
+                ProductSpecification: '',
+                Stock: '',
+                isError:'',
             }
         }
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.addProduct = this.addProduct.bind(this);
     }
-    
-    onSelectFile = (event) =>{
+
+    onSelectFile = (event) => {
         console.log(event.target.files)
-        for (let file of event.target.files) {
+        if (this.maxSelectFile(event) && this.checkMimeType(event) && this.checkFileSize(event)) {
             this.setState({
-                ProductImage: file
+                ProductImage: event.target.files
             })
         }
-        // console.log("the length",event.target.files.length)
-        // const ProductImage = Array.from(event.target.files);
-        // for (var i = 0; i < event.target.files.length; i++) {
-        //     var ProductImages= event.target.files[i];
-        // }
-        // this.setState({ProductImage});
-        // console.log("his is ",this.state.fields.ProductImage)
-        
+
+
+
     }
 
-    // onSelectFile = (event) => {
-    //     let addedFiles = this.state.files.concat(event.target.files)
-    //     this.setState({ ProductImage: addedFiles })
-    //     // console.log("upload file " + file.name)
-    //     }
+    //event handleing............image greater than 3
+    maxSelectFile = (event) => {
+        let errors = {};
+        let isValid = true;
+        let files = event.target.files // create file object
+        if (files.length > 3) {
+            const msg = 'Only 3 images can be uploaded at a time'
+            event.target.value = null // discard selected file
+            console.log(msg)
+            //    errors["ProductImage"] = "Only 3 images can be uploaded at a time'";
+            //   isValid=false
+            //   return isValid;
+            toast.error(msg)
+            return false;
 
+        }
+        return true;
+
+    }
+
+    //event handling ........file type
+
+    checkMimeType = (event) => {
+        //getting file object
+        let files = event.target.files
+        //define message container
+        let err = ''
+        // list allow mime type
+        const types = ['image/png', 'image/jpeg', 'image/gif', 'image/jpg']
+        // loop access array
+        for (var x = 0; x < files.length; x++) {
+            // compare file type find doesn't matach
+            if (types.every(type => files[x].type !== type)) {
+                // create error message and assign to container   
+                err += files[x].type + ' is not a supported format\n';
+            }
+        };
+
+        if (err !== '') { // if message not same old that mean has error 
+            event.target.value = null // discard selected file
+            console.log(err)
+            toast.error(err)
+           return false;
+         }
+        // for(var z = 0; z<err.length; z++) { // loop create toast massage
+        //     event.target.value = null 
+        //     toast.error(err[z])
+        // }
+         return true;
+
+    }
+
+
+    //event handling ..........picture size.
+
+    checkFileSize = (event) => {
+        let files = event.target.files
+        let size = 15000*1024*1024
+        let err = "";
+        for (var x = 0; x < files.length; x++) {
+            if (files[x].size > size) {
+                err += files[x].type + 'is too large, please pick a smaller file\n';
+            }
+        };
+        if (err !== '') {
+            event.target.value = null
+            console.log(err)
+            toast.error(err)
+            return false
+        }
+
+        return true;
+
+    }
     onChangeHandler = (event) => {
         let fields = this.state.fields;
-        if(event.target.name == "BrandId"){
-            var options = event.target.options;
-            var value = [];
-            for (var i = 0, l = options.length; i < l; i++) {
-                if (options[i].selected) {
-                value.push(options[i].value);
-                }
-            }
-            fields[event.target.name] = value;
-        }else{
-            fields[event.target.name] = event.target.value;
-        }
+
+        fields[event.target.name] = event.target.value;
+
         this.setState({
             fields
         })
-        console.log("thisis",fields);
+
     }
     componentDidMount() {
         axios.get('http://localhost:3050/ShowBrand')
@@ -107,75 +165,84 @@ class AddProduct extends Component {
             errors["ProductDescription"] = "Please enter the Product Description";
             isValid = false;
         }
-       
+
         if (!this.state.ProductImage) {
-            
+
             errors["ProductImage"] = "Please Choose the Image";
             isValid = false;
         }
-        
-        if(!this.state.fields["ProductSpecification"]) {
+
+        if (!this.state.fields["ProductSpecification"]) {
             errors["ProductSpecification"] = "Please enter the Product Specification";
             isValid = false;
         }
-        if(!this.state.fields["Stock"]) {
+        if (!this.state.fields["Stock"]) {
             errors["Stock"] = "Please enter the Product Stock";
             isValid = false;
         }
-        if(!this.state.fields["ProductPrice"]) {
+        if (!this.state.fields["ProductPrice"]) {
             errors["ProductPrice"] = "Please enter the Product Price";
             isValid = false;
         }
-        
+
         this.setState({
             errors: errors,
         })
         return isValid
     }
 
-    addProduct= (event) => {
+    addProduct = (event) => {
         event.preventDefault();
-     
+
         if (this.isValidForm()) {
-            // let formData =new FormData()
-            // for(let image of this.fields.ProductImage)
-            // {
-            //     formData.append('ProductImage',image)
-            // }
-            // formData.append('ProductName',this.fields.ProductNameProductName)
-            // formData.append('ProductDescription',this.fields.ProductDescription)
-            // formData.append('ProductSpecification',this.fields.ProductSpecification)
-            // formData.append('BrandId',this.fields.BrandId)
-            // formData.append('ProductPrice',this.fields.ProductPrice)
-            this.state.fields["ProductImage"] =this.state.fields.ProductImage;
-            console.log("fields",this.state.fields.ProductImage)
-            console.log("this is",this.state.fields.ProductImage)
-            axios.post('http://localhost:3050/productInsert')
+            let formData = new FormData()
+           
+            
+                for (var x = 0; x < this.state.ProductImage.length; x++) {
+                    formData.append('ProductImage', this.state.ProductImage[x])
+                }
+            
+           
+
+            formData.append('ProductName', this.state.fields.ProductName)
+            formData.append('ProductDescription', this.state.fields.ProductDescription)
+            formData.append('ProductSpecification', this.state.fields.ProductSpecification)
+            formData.append('BrandId', this.state.fields.BrandId)
+            formData.append('ProductPrice', this.state.fields.ProductPrice)
+            formData.append('Stock', this.state.fields.Stock)
+
+            axios.post('http://localhost:3050/productInsert', formData)
                 .then(response => {
                     console.log("aaa************aas")
                     console.log(response)
+                    toast.success('add Successfully')
                     this.setState({
                         isRegister: true
+                        
                     })
+                    
                 })
+               
                 .catch(error => {
                     console.log(error)
+                    toast.error('Add fail')
                 })
         }
     }
 
     render() {
-        const { Brands, ProductName,ProductPrice,ProductSpecification,ProductDescription,Stock,ProductImage,BrandId, isRegister } = this.state
+        const { Brands, ProductName, ProductPrice, ProductSpecification, ProductDescription, Stock, ProductImage, BrandId, isRegister } = this.state
         if (isRegister) {
             console.log("yess..........yess")
             return <Redirect to="/login/dashboard/product"></Redirect>
         }
         return (
-            
+
             <Fragment>
+                  <ToastContainer />
                 <Container className="topFixedLoginBanner p-0" fluid={true} >
                     <div className="topLoginBannerOverlay ">
-                        <form className="product-form container-sm text-left"  onSubmit={this.addProduct}>
+                        <form className="product-form container-sm text-left" onSubmit={this.addProduct}>
                             <div>
                                 <h1 className="registration-Form-h1">ADD-Product</h1>
                             </div>
@@ -186,7 +253,7 @@ class AddProduct extends Component {
                             <div className="registrationForm-label">
                                 <label>ProductName </label>
 
-                
+
 
                                 :<input type="text" className="form-control" placeholder="product" name="ProductName" value={ProductName} onChange={this.onChangeHandler}></input>
                                 <div className="errMessage">{this.state.errors.ProductName}</div>
@@ -195,9 +262,9 @@ class AddProduct extends Component {
 
                             <div className="registrationForm-label">
                                 <label>Choose Image </label>
-                                
 
-                                : <input className="form-control" onChange={this.onSelectFile} 
+
+                                : <input className="form-control" onChange={this.onSelectFile}
                                     type="file" name="ProductImage" multiple />
                                 <div className="errMessage">{this.state.errors.ProductImage}</div>
                             </div>
@@ -244,11 +311,14 @@ class AddProduct extends Component {
                             <br></br>
 
                             <div >
-                                
+
                                 <input type="submit" value="submit" className=" btn btn-primary"></input>
-                                    
+
                                 &nbsp;
                                 <Link to="/login/dashboard/product" className="btn btn-primary">Back</Link>
+                            </div>
+                            <div>
+                                {this.state.errors.isError}
                             </div>
                         </form>
 

@@ -1,15 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import './AddCategory.css'
 import { Redirect, Link } from 'react-router-dom'
 import axios from 'axios'
 import { Container, Button } from 'react-bootstrap'
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
-// import '../Login/Login.css'
 import '../../asset/css/custom.css'
 import '../../asset/css/bootstrap.min.css'
-class AddCategory extends Component {
+class UpdateCategory extends Component {
     constructor() {
         super();
         this.state = {
@@ -33,7 +31,7 @@ class AddCategory extends Component {
         }
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
-        this.addCategory = this.addCategory.bind(this);
+        this.editCategory = this.editCategory.bind(this);
     }
     onChangeHandler = (event) => {
 
@@ -54,7 +52,7 @@ class AddCategory extends Component {
         }
 
         this.setState({
-            fields
+            fields:fields
         })
         console.log("thisis", fields);
     }
@@ -65,10 +63,7 @@ class AddCategory extends Component {
 
         console.log("the length", event.target.files)
         this.setState({ CategoryImage: event.target.files[0] });
-        // fields[event.target.name] = event.target.files[0];
-        // image = event.target.files[0]
-        // console.log("this is", image)
-        // console.log("this is", this.state.fields.CategoryImage)
+
 
     }
     componentDidMount() {
@@ -77,14 +72,37 @@ class AddCategory extends Component {
                 this.setState({
                     Brands: res.data.allBrand,
                 })
-
+                // axios.get('http://localhost:3050/ShowCategory/' + this.props.match.params.id)
+                //     .then(res => {
+                //         console.log(res)
+                //         //    console.log(res.data.Brand[0].BrandName)
+                //         this.setState({
+                //             CategoryName: res.data.categoryData.CategoryName,
+                //             CategoryDescription: res.data.categoryData.CategoryDescription,
+                //             CategoryImage: res.data.categoryData.CategoryImage,
+                //             CategoryBrands: res.data.categoryData.CategoryBrands[0].BrandName
+                //         })
+                //     })
 
             })
             .catch(err => {
                 console.log("error")
             })
     }
-
+    componentWillMount() {
+        axios.get('http://localhost:3050/ShowCategory/' + this.props.match.params.id)
+            .then(res => {
+                let fields = this.state.fields;
+                    fields.CategoryName = res.data.categoryData.CategoryName;
+                    fields.CategoryDescription = res.data.categoryData.CategoryDescription;
+                    fields.CategoryImage = res.data.categoryData.CategoryImage;
+                    fields.CategoryBrands = res.data.categoryData.CategoryBrands[0].BrandName;
+                this.setState({
+                    fields: fields,
+                    isedit: false
+                })
+            })
+    }
     isValidForm = () => {
         let errors = {};
         let isValid = true;
@@ -113,19 +131,19 @@ class AddCategory extends Component {
         })
         return isValid
     }
-    addCategory = (event) => {
+    editCategory = (event) => {
         event.preventDefault();
 
         if (this.isValidForm()) {
 
-            console.log("this....is..category brands",this.state.fields.CategoryBrands)
+            console.log("this....is..category brands", this.state.fields.CategoryBrands)
             const data = new FormData()
-           
+
             data.append('CategoryImage', this.state.CategoryImage)
             data.append('CategoryName', this.state.fields.CategoryName)
             data.append('CategoryDescription', this.state.fields.CategoryDescription)
             data.append('CategoryBrands', this.state.fields.CategoryBrands)
-            axios.post('http://localhost:3050/CategoryInsert', data)
+            axios.patch('http://localhost:3050/CategoryUpdate/' + this.props.match.params.id, data)
                 .then(response => {
                     console.log("aaa************aas")
                     console.log(response)
@@ -152,9 +170,9 @@ class AddCategory extends Component {
             <Fragment>
                 <Container className="topFixedLoginBanner p-0" fluid={true} >
                     <div className="topLoginBannerOverlay ">
-                        <form className="category-Form container-sm text-left" onSubmit={this.addCategory}>
+                        <form className="category-Form container-sm text-left" onSubmit={this.editCategory}>
                             <div>
-                                <h1 className="registration-Form-h1">ADD-Category</h1>
+                                <h1 className="registration-Form-h1">EDIT-Category</h1>
                             </div>
 
                             <br></br>
@@ -165,7 +183,7 @@ class AddCategory extends Component {
 
 
 
-                                :<input type="text" className="form-control" placeholder="Category" name="CategoryName" value={CategoryName} onChange={this.onChangeHandler}></input>
+                                :<input type="text" className="form-control" placeholder="Category" name="CategoryName" value={this.state.fields.CategoryName} onChange={this.onChangeHandler}></input>
                                 <div className="errMessage">{this.state.errors.CategoryName}</div>
                             </div>
 
@@ -211,10 +229,8 @@ class AddCategory extends Component {
                     </div>
                 </Container >
             </Fragment >
-
         );
     }
 }
 
-export default AddCategory;
-// /sssn
+export default UpdateCategory;

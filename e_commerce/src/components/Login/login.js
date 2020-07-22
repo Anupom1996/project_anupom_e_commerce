@@ -19,10 +19,10 @@ class Login extends Component {
             errors: {
                 AdminEmail: '',
                 AdminPassword: '',
-                isLogin:''
+                isLogin: ''
             },
             authlogin: false,
-            
+            user: [],
         }
     }
     setError = (err, msg) => {
@@ -65,40 +65,40 @@ class Login extends Component {
     loginHandler = (event) => {
         event.preventDefault();
         console.log("the satate is...")
-        console.log(this.state)
+        console.log(this.state.fields)
         if (this.isValidForm()) {
             axios.post('http://localhost:3050/Adminlogin', this.state.fields)
                 .then(response => {
-                    console.log("asdfg")
-                    console.log(response)
-                    console.log(response.data.token)
-                    localStorage.setItem("auth", JSON.stringify(response.data.token))
+                   console.log("asd")
+                    this.setState({ user: response.data.user })
+                    localStorage.setItem("auth", JSON.stringify(response.data.token))  
                     this.setState({
                         authlogin: true
-                    }).then(response => {
-                        toast.success("Login Successful !", setTimeout(() => {
-                            toast.success("LOADING ACCOUNT")
-                        }, 100), {
-                        });
-                    }).catch(err => {
-                        toast.error(err.response.data, {
-                            position: toast.POSITION.TOP_LEFT
-                        });
-                    });
+                    })
+                    
+                    toast.success("login successful")  
+                        
                 },
                     err => {
                         this.setState({ errors: { isLogin: err.response.data.err } });
+                          toast.error("login fail") 
+                        // console.log("xyy")
+                        // return <Redirect to="/login"></Redirect>
                     })
+                // .then(res => { toast.success("login successfull") })
                 .catch(error => {
                     console.log(error)
+                    
                 })
         }
 
     }
     render() {
-        const { AdminEmail, AdminPassword, authlogin,isLogin } = this.state
+        const { AdminEmail, AdminPassword, authlogin, isLogin, user } = this.state
         if (authlogin) {
-            return <Redirect to="/login/dashboard"></Redirect>
+            console.log("aa")
+            
+            return <Redirect to={{ pathname: "/login/dashboard", state: this.state.user }}></Redirect>
         }
 
 

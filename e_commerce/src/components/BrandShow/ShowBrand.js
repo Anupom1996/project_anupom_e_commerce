@@ -102,8 +102,8 @@ class ShowBrand extends Component {
                                     <td>
                                         <BsFillTrashFill onClick={() => this.deleteBrand(Brand._id)}></BsFillTrashFill>
                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                   <BsPencilSquare onClick={() => this.editBrand(Brand._id)}></BsPencilSquare>
-                                    {/* <Link to='/login/dashboard/brand/editbrand'>Edit</Link> */}
+                                   {/* <BsPencilSquare onClick={() => this.editBrand(Brand._id)}></BsPencilSquare> */}
+                                    <Link to={'/login/dashboard/brand/editbrand/'+Brand._id}>Edit</Link>
                                     </td>
 
                                 </tr>
